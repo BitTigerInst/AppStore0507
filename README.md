@@ -8,3 +8,7 @@ The major functionalities are :
 app information will be provided in a raw dataset and then loaded into a MySQL database;
 the final interface will filter the home page to only show the top 10 apps;
 finally, if the user wishes to learn more about an app, they will be able to click on an app and be directed to a details page.
+
+//////////
+test two by kang
+commit master
