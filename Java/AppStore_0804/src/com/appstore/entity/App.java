@@ -2,6 +2,7 @@ package com.appstore.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.Id;
 
 @Entity // define a Entity??? claim that this class is initialed with hibernate
@@ -22,11 +23,31 @@ public class App {
 	//hibernate connect sql will come error, hibernate need empty variable constructor
 	
 	@Id //set the Id. getAppid -> appid to search id in DB.
-	//field appid is inrelevant, can change any names
-	// why id is special?
 	public String getAppid() {
 		return appid;
 	}
+	//field appid is inrelevant, can change any names
+	// why id is special?
+	
+	private String[] top5AppsArr;
+	@Transient // this is not in the sql, how to convert this? Transient is template word, no need to find the field in the sql
+	public String[] getTop5AppsArray() {
+		
+		if(this.top5App != null && this.top5App.length() > 0){
+			this.top5App = this.top5App.substring(1, this.top5App.length()-1);
+			
+			String[] appIDs = this.top5App.split(",");
+			this.top5AppsArr = new String[5];
+			
+			for(int i = 0 ; i < appIDs.length; i++)
+				this.top5AppsArr[i] = appIDs[i].trim();
+		}else
+			return new String[]{};
+	
+		return top5AppsArr;
+	}
+	
+	
 
 	public String getTitle() {
 		return title;
