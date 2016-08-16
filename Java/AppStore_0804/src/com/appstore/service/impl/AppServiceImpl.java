@@ -2,6 +2,8 @@ package com.appstore.service.impl;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.appstore.dao.AppDao;
 //import com.appstore.dao.Appdao;
 import com.appstore.entity.App;
@@ -21,6 +23,7 @@ public class AppServiceImpl implements AppService{
 	}
 
 	@Override
+	@Transactional
 	public List<App> readRecomApps(List<String> appIDs) {
 		// TODO Auto-generated method stub
 		return this.appDao.readRecomApps(appIDs);
